@@ -1,0 +1,27 @@
+<div class="form-signin text-center">
+  <h1>Por favor, autentique-se!</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="username" class="form-control" placeholder="Usuário" [class.is-invalid]="f.username.errors && submitted"/>
+      <div *ngIf="loginForm.hasError && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Usuário é obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" formControlName="password" class="form-control" placeholder="Senha" [ngClass]="{ 'is-invalid': f.password.errors && submitted }"/>
+      <div *ngIf="loginForm.hasError && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Senha é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-success">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Login
+      </button>
+    </div>
+
+  </form>
+
+</div>
