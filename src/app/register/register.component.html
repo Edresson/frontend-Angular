@@ -9,13 +9,13 @@
       </div>
     </div>
     <div class="form-group">
-      <input type="text" formControlName="mail" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': f.password.errors && submitted }"/>
+      <input type="text" formControlName="mail" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': f.mail.errors && submitted }"/>
       <div *ngIf="registerForm.hasError && f.mail.errors" class="invalid-feedback">
         <div *ngIf="f.mail.errors.required">Email é obrigatório</div>
       </div>
     </div>
     <div class="form-group">
-      <input type="text" formControlName="phone" class="form-control" placeholder="Telefone" [ngClass]="{ 'is-invalid': f.password.errors && submitted }"/>
+      <input type="text" formControlName="phone" class="form-control" placeholder="Telefone" [ngClass]="{ 'is-invalid': f.phone.errors && submitted }"/>
       <div *ngIf="registerForm.hasError && f.phone.errors" class="invalid-feedback">
         <div *ngIf="f.phone.errors.required">Telefone é obrigatório</div>
       </div>

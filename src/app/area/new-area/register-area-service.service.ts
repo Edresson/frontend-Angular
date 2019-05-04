@@ -1,33 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { getDefaultURL } from '../app.const';
+import { getDefaultURL } from 'src/app/app.const';
 import { catchError } from 'rxjs/operators';
+import { AuthUtilService } from 'src/app/login/auth-util.service';
 
 @Injectable()
-export class RegisterService {
+export class RegisterAreaServiceService {
 
-  constructor(private http:HttpClient) { }
-  
+  constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
   private getHeaders(): HttpHeaders{
     return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Content-Type':'application/json',
+      'Authorization': this.authUtil.currentTokenValue
     });
   }
-  public register = (user: string,mail: string,phone: string, senha: string): Observable<string> =>{
-    const body = JSON.stringify({name: user,
-    mail: mail,
-    phone: phone,
-    password: senha,
-    country: {
-      id: 1
-    },
-    phoneCode: {
-      id: 1
+  public register = (description: string,geometry: string,soilid: string): Observable<string> =>{
+    const body = JSON.stringify({description:description,
+    geometry: geometry,
+    soil: {
+    id: Number(soilid) 
     }});
+   
 
-    return this.http.post<string>( getDefaultURL('person'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
+
+    return this.http.post<string>( getDefaultURL('area'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

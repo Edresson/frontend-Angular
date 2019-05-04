@@ -8,6 +8,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="[ '/pessoa/list' ]">Pessoa</a>
         </li>    
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="[ '/area/new' ]">Minhas Areas</a>
+        </li>  
       <li class="nav-item">
         <a *ngIf="!isLogged()" class="nav-link" [routerLink]="[ '/login' ]">Login</a>
         <a *ngIf="isLogged()" class="nav-link" (click)="logout()">Logout</a>

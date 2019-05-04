@@ -1,0 +1,34 @@
+<div class="form-signin text-center">
+  <h1>Insira uma nova Área</h1>
+
+  <form [formGroup]="registerAreaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="descricao" class="form-control" placeholder="Descrição" [class.is-invalid]="f.descricao.errors && submitted"/>
+      <div *ngIf="registerAreaForm.hasError && f.descricao.errors" class="invalid-feedback">
+        <div *ngIf="f.descricao.errors.required">Descrição é obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="geometria" class="form-control" placeholder="Geometria" [ngClass]="{ 'is-invalid': f.geometria.errors && submitted }"/>
+      <div *ngIf="registerAreaForm.hasError && f.geometria.errors" class="invalid-feedback">
+        <div *ngIf="f.geometria.errors.required">A Geometria é obrigatória</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="tiposolo" class="form-control" placeholder="Tipo do Solo" [ngClass]="{ 'is-invalid': f.tiposolo.errors && submitted }"/>
+      <div *ngIf="registerAreaForm.hasError && f.tiposolo.errors" class="invalid-feedback">
+        <div *ngIf="f.tiposolo.errors.required">O Tipo do solo é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-success">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Registrar
+      </button>
+    </div>
+
+  </form>
+
+</div>
