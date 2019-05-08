@@ -26,7 +26,6 @@ export class NewAreaComponent implements OnInit {
   }
 
   public onSubmit(){
-    console.log('entrou no onsubmit');
     if(this.registerAreaForm.invalid){
       console.log('retornou');
       return;
@@ -36,7 +35,7 @@ export class NewAreaComponent implements OnInit {
         console.log(data);
 
         //redireciona a view
-        this.router.navigate(['/areas']);
+        this.router.navigate(['/area/all']);
       },
       (error) => {
         this.message = error;

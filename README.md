@@ -33,3 +33,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 () Add combo box in  "tipo de solo"(/area/new)
 () Add britsh day in /register
 
+continuar de area/all

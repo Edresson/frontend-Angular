@@ -8,7 +8,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterAreaServiceService } from './new-area/register-area-service.service';
 
 const routes: Routes = [
-  { path: 'new', component: NewAreaComponent }
+  { path: 'new', component: NewAreaComponent },
+  { path: 'all', component: AreasComponent},
+  { path: 'edit', component:  EditAreaComponent}
 ];
 
 @NgModule({
