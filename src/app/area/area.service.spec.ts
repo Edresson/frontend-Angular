@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NewAreaService } from './new-area.service';
+import { AreaService } from './area.service';
 
-describe('NewAreaService', () => {
+describe('AreaService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NewAreaService = TestBed.get(NewAreaService);
+    const service: AreaService = TestBed.get(AreaService);
     expect(service).toBeTruthy();
   });
 });
