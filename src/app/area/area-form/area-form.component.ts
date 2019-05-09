@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { RegisterAreaServiceService } from './register-area-service.service';
 
 @Component({
-  selector: 'app-new-area',
-  templateUrl: './new-area.component.html',
-  styleUrls: ['./new-area.component.css']
+  selector: 'app-area-form',
+  templateUrl: './area-form.component.html',
+  styleUrls: ['./area-form.component.css']
 })
-export class NewAreaComponent implements OnInit {
+export class AreaFormComponent implements OnInit {
 
   registerAreaForm: FormGroup;
   message;

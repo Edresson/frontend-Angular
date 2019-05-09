@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewAreaComponent } from './new-area/new-area.component';
-import { EditAreaComponent } from './edit-area/edit-area.component';
-import { AreasComponent } from './areas/areas.component';
+import { AreaFormComponent } from './area-form/area-form.component';
+import { AreaListComponent } from './area-list/area-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RegisterAreaServiceService } from './new-area/register-area-service.service';
+import { RegisterAreaServiceService } from './area-form/register-area-service.service';
 
 const routes: Routes = [
-  { path: 'new', component: NewAreaComponent },
-  { path: 'all', component: AreasComponent},
-  { path: 'edit', component:  EditAreaComponent}
+  { path: 'new', component: AreaFormComponent },
+  { path: 'all', component: AreaListComponent}
 ];
 
 @NgModule({
-  declarations: [NewAreaComponent, EditAreaComponent, AreasComponent],
+  declarations: [AreaFormComponent, AreaListComponent],
   imports: [
     CommonModule,
     FormsModule,
