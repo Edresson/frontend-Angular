@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterAreaServiceService } from './register-area-service.service';
 
+
 @Component({
   selector: 'app-area-form',
   templateUrl: './area-form.component.html',
@@ -12,6 +13,10 @@ export class AreaFormComponent implements OnInit {
 
   registerAreaForm: FormGroup;
   message;
+  lt: number = -25.2970272;
+  lg: number = -54.112394;
+  zoom: number = 15;
+  
   constructor(private formBuilder: FormBuilder,private router: Router,private registerService: RegisterAreaServiceService) { }
 
   ngOnInit() {

@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterAreaServiceService } from './area-form/register-area-service.service';
 
+import { AgmCoreModule } from '@agm/core';
+
 const routes: Routes = [
   { path: 'new', component: AreaFormComponent },
   { path: 'all', component: AreaListComponent}
@@ -17,7 +19,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC3GsNDa6YcGMgcTw0e4tpSq5mSbC2Qz2s'
+    })
   ],
   providers: [
     RegisterAreaServiceService, // seu provider aqui
