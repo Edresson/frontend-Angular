@@ -4,9 +4,10 @@ import { AreaFormComponent } from './area-form/area-form.component';
 import { AreaListComponent } from './area-list/area-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RegisterAreaServiceService } from './area-form/register-area-service.service';
+//import { RegisterAreaServiceService } from './area-form/register-area-service.service';
 
 import { AgmCoreModule } from '@agm/core';
+import { AreaService } from './area.service';
 
 const routes: Routes = [
   { path: 'new', component: AreaFormComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
     })
   ],
   providers: [
-    RegisterAreaServiceService, // seu provider aqui
+    AreaService, 
   ]
 })
 export class AreaModule { }
