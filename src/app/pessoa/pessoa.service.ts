@@ -15,14 +15,19 @@ export class PessoaService {
 
   private getHeaders(): HttpHeaders{
     return new HttpHeaders({
-      'Authorization': this.authUtil.currentTokenValue,
-      'Accept': 'application/json'
+      'Content-Type':'application/json',
+      'Authorization': this.authUtil.currentTokenValue
     });
   }
 
   public getPessoas = (): Observable<Pessoa[]> =>{
     
-    return this.http.get<Pessoa[]>( getDefaultURL('pessoa'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
+    return this.http.get<Pessoa[]>( getDefaultURL('person/all'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
+  }
+
+  public getPessoa = (): Observable<Pessoa> =>{
+    
+    return this.http.get<Pessoa>( getDefaultURL('person'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

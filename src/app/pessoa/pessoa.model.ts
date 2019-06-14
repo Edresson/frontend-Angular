@@ -1,7 +1,7 @@
 export class Pessoa{
     id: number;
-    nome: string;
-    email: string;
-    senha: string;
-    dataNascimento: string;
+    name: string;
+    mail: string;
+    phone:string;
+    birth: string;
 }

@@ -24,12 +24,26 @@ export class AreaService {
     }});
     return this.http.post<string>( getDefaultURL('area'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
+
+  public edit = (id:number,description: string,geometry: string,soilid: string): Observable<string> =>{
+    const body = JSON.stringify({id:id,description:description,
+    geometry: geometry, 
+    soil: {
+      id: Number(soilid) 
+      }});
+    return this.http.put<string>( getDefaultURL('area'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
+  }
+
   public deleteAreas = (area:Area): Observable<string> =>{
     return this.http.delete<string>( getDefaultURL('area/'+area.id), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
   }
 
   public getAreas = (): Observable<Area[]> =>{
     return this.http.get<Area[]>( getDefaultURL('area/all'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
+  }
+
+  public getArea = (areaId): Observable<Area> =>{
+    return this.http.get<Area>( getDefaultURL('area/'+areaId), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

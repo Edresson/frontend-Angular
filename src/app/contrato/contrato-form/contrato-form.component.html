@@ -1,0 +1,38 @@
+<div class="form-signin text-center">
+  <h1 *ngIf="!editContratoflag">Insira uma novo Contrato</h1>
+  <h1 *ngIf="editContratoflag">Editar Contrato</h1>
+  <form [formGroup]="registerContratoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="authorized" class="form-control" placeholder="Id da pessoa que sera autorizada" [class.is-invalid]="f.authorized.errors && submitted"/>
+      <div *ngIf="registerContratoForm.hasError && f.authorized.errors" class="invalid-feedback">
+        <div *ngIf="f.authorized.errors.required">O id do autorizado é obrigatório</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="dateStart" class="form-control" placeholder="Data de inicio" [ngClass]="{ 'is-invalid': f.dateStart.errors && submitted }"/>
+      <div *ngIf="registerContratoForm.hasError && f.dateStart.errors" class="invalid-feedback">
+        <div *ngIf="f.dateStart.errors.required">A data de inicio é obrigatória</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="dateEnd" class="form-control" placeholder="Data final" [ngClass]="{ 'is-invalid': f.dateEnd.errors && submitted }"/>
+      <div *ngIf="registerContratoForm.hasError && f.dateEnd.errors" class="invalid-feedback">
+        <div *ngIf="f.dateEnd.errors.required">A data final do contrato é obrigatória</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button *ngIf="!editContratoflag" [disabled]="loading" class="btn btn-success">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Registrar
+      </button>
+      <button *ngIf="editContratoflag" [disabled]="loading" class="btn btn-success">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Salvar
+      </button>
+    </div>
+
+  </form>
+
+</div>

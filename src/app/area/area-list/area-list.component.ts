@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AreaListComponent implements OnInit {
   areas: Area[];
+  areaEdit : Boolean;
+  
   constructor(private areaService: AreaService,private router: Router) { }
 
   ngOnInit() {
+    this.areaEdit  = false;
     this.areaService.getAreas().subscribe(
       (data: Area[]) => {
         this.areas = data;
@@ -28,12 +31,17 @@ export class AreaListComponent implements OnInit {
     this.router.navigate(['/area/new']);
   }
 
-  public onUpdateArea(area:Area){
+  public onUpdateArea(areaId: number){
+    console.log("updateArea")
+    this.areaEdit = true;
+    this.router.navigate(['/area/edit',areaId]);
+
     //UpdateArea
   }
 
   public onDeleteArea(area:Area){
     //Delete area.id
+
     this.areaService.deleteAreas(area).subscribe(
       (data: string) => {
         this.ngOnInit();
