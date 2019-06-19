@@ -44,11 +44,13 @@ export class ResourceListComponent implements OnInit {
     
 
   grupo = {};
+
   categoriesSelected = [
     false, false, false,false
   ];
   constructor(private resourceService: ResourceService,private router: Router,private formBuilder: FormBuilder,private route: ActivatedRoute) { 
     this.myGroup = this.formBuilder.group(this.grupo);
+    //this.permissions = [new Permission()]
   }
 compare(list1:Boolean[],list2:Boolean[]){
 
@@ -122,6 +124,44 @@ submit() {
     this.resourceService.getPermissions().subscribe(
       (data: Permission[]) => {
         this.permissions= data;
+
+        this.resourceService.getResources().subscribe(
+          (data: Resource[]) => {
+            let permissionid;
+            this.resources = data;
+            for (var resource of this.resources) {
+              var categoriesS =[];
+              for(var permission of this.permissions){
+                if(resource.id == permission.resource.id && this.contratoID == permission.contract.id){ //
+                  categoriesS = [permission.get,permission.post,permission.put,permission.delete]
+                  permissionid = permission.id;
+                  //console.log(permission.get,permission.post,permission.put,permission.delete)
+                }
+              }
+              
+              if(categoriesS.length > 0){
+                this.myGroup.addControl(resource.className,this.formBuilder.array(categoriesS));
+                this.grupo[resource.className] = [this.formBuilder.array(categoriesS),categoriesS,resource.id,false,permissionid];
+                //console.log(this.grupo[resource.className])
+              }else{
+                this.myGroup.addControl(resource.className,this.formBuilder.array(this.categoriesSelected));
+                this.grupo[resource.className] = [this.formBuilder.array(this.categoriesSelected),this.categoriesSelected,resource.id,true,permissionid] // if true é necessário criar uma nova permissão se false apenas editar
+                //console.log(this.grupo[resource.className])
+              }
+              
+              
+              
+              
+             
+            }
+          },
+          (error) =>{
+    
+    
+            console.log(error);
+          }
+        );
+        
         //console.log(this.permissions)
       },
       (error) =>{
@@ -131,42 +171,7 @@ submit() {
       }
     );
 
-    this.resourceService.getResources().subscribe(
-      (data: Resource[]) => {
-        let permissionid=null;
-        this.resources = data;
-        for (var resource of this.resources) {
-          var categoriesS =[]
-          for(var permission of this.permissions){
-            if(resource.id == permission.resource.id && this.contratoID == permission.contract.id){ //
-              categoriesS = [permission.get,permission.post,permission.put,permission.delete]
-              permissionid = permission.id;
-              //console.log(permission.get,permission.post,permission.put,permission.delete)
-            }
-          }
-          
-          if(categoriesS.length > 0){
-            this.myGroup.addControl(resource.className,this.formBuilder.array(categoriesS));
-            this.grupo[resource.className] = [this.formBuilder.array(categoriesS),categoriesS,resource.id,false,permissionid];
-            //console.log(this.grupo[resource.className])
-          }else{
-            this.myGroup.addControl(resource.className,this.formBuilder.array(this.categoriesSelected));
-            this.grupo[resource.className] = [this.formBuilder.array(this.categoriesSelected),this.categoriesSelected,resource.id,true,permissionid] // if true é necessário criar uma nova permissão se false apenas editar
-            //console.log(this.grupo[resource.className])
-          }
-          
-          
-          
-          
-         
-        }
-      },
-      (error) =>{
-
-
-        console.log(error);
-      }
-    );
+   
     
     
 

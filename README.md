@@ -41,5 +41,3 @@ usuario para login com acesso admin ( a função listar pessoas atualmente só f
 () usar  angular material para melhorar a interface alterar oque foi necessário.
 
 
-() ver com o professor o problema em resource/id/:id possivel problema de concorrencia usar Sincronização ? 
-
