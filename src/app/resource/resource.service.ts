@@ -29,16 +29,40 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
     return this.http.post<string>( getDefaultURL('resource'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
 
-  public edit = (id: number,authorized: number,person:number,dateStart:string,dateEnd:string): Observable<string> =>{
+  public createPermission = (resourceid: number, contractid: number,get: Boolean,post:Boolean,put:Boolean,del:Boolean): Observable<Permission> =>{
     const body = JSON.stringify(
-      {
-        id: id,
-        authorized: {id:authorized},
-        person: {id:person},
-        dateStart: dateStart,
-        dateEnd: dateEnd
-      });
-    return this.http.put<string>( getDefaultURL('resource'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
+    {
+        
+        resource: {
+          id: resourceid
+        },
+        contract: {
+          id: contractid
+        },
+        get: get,
+        put: put,
+        post: post,
+        delete: del
+    });
+    return this.http.post<Permission>( getDefaultURL('permission'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
+  }
+
+  public editPermission = (permissionid: number, resourceid: number, contractid: number,get: Boolean,post:Boolean,put:Boolean,del:Boolean): Observable<string> =>{
+    const body = JSON.stringify(
+    {
+       id: permissionid,
+        resource: {
+          id: resourceid
+        },
+        contract: {
+          id: contractid
+        },
+        get: get,
+        put: put,
+        post: post,
+        delete: del
+    });
+    return this.http.put<string>( getDefaultURL('permission'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
 
   public deleteResources = (resource:Resource): Observable<string> =>{
