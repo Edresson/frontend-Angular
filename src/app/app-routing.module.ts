@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'pessoa', loadChildren: './pessoa/pessoa.module#PessoaModule', canActivate: [AuthGuard] },
   { path: 'area', loadChildren: './area/area.module#AreaModule', canActivate: [AuthGuard] },
-  { path: 'contrato', loadChildren: './contrato/contrato.module#ContratoModule', canActivate: [AuthGuard] }
+  { path: 'contrato', loadChildren: './contrato/contrato.module#ContratoModule', canActivate: [AuthGuard] },
+  { path: 'resource', loadChildren: './resource/resource.module#ResourceModule', canActivate: [AuthGuard] }
 ];
 
 @NgModule({

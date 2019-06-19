@@ -2,17 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Contrato } from '../contrato.model';
 import { ContratoService } from '../contrato.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-contrato-list',
   templateUrl: './contrato-list.component.html',
   styleUrls: ['./contrato-list.component.css']
 })
+
 export class ContratoListComponent implements OnInit {
+
   contratos: Contrato[];
   contratoEdit : Boolean;
-  
+ 
   constructor(private contratoService: ContratoService,private router: Router) { }
+  
 
   ngOnInit() {
     this.contratoEdit  = false;
@@ -26,9 +30,17 @@ export class ContratoListComponent implements OnInit {
     );
   }
 
+  
   public onSubmit(){
     this.router.navigate(['/contrato/new']);
   }
+
+  public onResource(contratoId: number){
+    console.log("Resource list")
+    this.router.navigate(['/resource/id/',contratoId]);
+  }
+
+
 
   public onUpdateContrato(contratoId: number){
     console.log("updateContrato")
