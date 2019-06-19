@@ -58,6 +58,8 @@ return  JSON.stringify(list1) == JSON.stringify(list2)}
 submit() {
   let array = Object.getOwnPropertyNames(this.grupo);
   for (var name of array) {
+    console.log(name,":",this.grupo[name][1],'2', this.myGroup.get(name).value, "compare:",this.compare(this.myGroup.get(name).value,this.grupo[name][1]))
+
     if(!this.compare(this.myGroup.get(name).value,this.grupo[name][1])){ // ocorreu modificação nos checkbox
       let dataPerm = this.myGroup.get(name).value;
       let resourceid= this.grupo[name][2]
@@ -101,8 +103,7 @@ submit() {
 
       } 
     }
-    //console.log(name,":",this.grupo[name][1],'2', this.myGroup.get(name).value, "compare:",this.compare(this.myGroup.get(name).value,this.grupo[name][1]))
-  }
+      }
 }
 
   ngOnInit() {
