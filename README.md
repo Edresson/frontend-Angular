@@ -34,11 +34,9 @@ usuario para login com acesso admin ( a função listar pessoas atualmente só f
     senha: 1234
     
 () Add google maps in geometry form (/area/new)
-() Add combo box in  "tipo de solo"(/area/new)
 
-() adicionar data em formato "normal em contrato/new
-() adicionar filtragem para mostrar data em formato "normal" ( dia/mes/ano acredito que pode desprezar a hora) em contrato/all
-() adicionar combobox de pessoas em contrato/new
+() adicionar data em formato "normal" ( dia/mes/ano acredito que pode desprezar a hora) em contrato/new
+() adicionar filtragem para mostrar data em formato "normal"  em contrato/all
 
 () usar  angular material para melhorar a interface alterar oque foi necessário.
 

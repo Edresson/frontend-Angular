@@ -14,7 +14,7 @@ import { Pessoa } from 'src/app/pessoa/pessoa.model';
 export class ContratoFormComponent implements OnInit {
   editContratoflag: boolean;
   registerContratoForm: FormGroup;
-  
+  pessoas: Pessoa[];
   message;
   contratoID: number;
   personID:number;
@@ -23,6 +23,16 @@ export class ContratoFormComponent implements OnInit {
   ngOnInit() {
     this.editContratoflag = false;
     
+    this.contratoService.getUsers().subscribe(
+      (data: Pessoa[]) => {
+        this.pessoas = data;
+        console.log(data);
+      },
+      (error) =>{
+        console.log(error);
+      }
+    );
+
     this.registerContratoForm = this.formBuilder.group({
         authorized: ['', Validators.required],
         dateStart:['', Validators.required],
@@ -33,7 +43,7 @@ export class ContratoFormComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       const contratoId = +params.get('id');
-      console.log('contratoid:')
+      //console.log('contratoid:')
       if(contratoId){
         this.getContrato(contratoId);
         this.contratoID = contratoId;
@@ -65,9 +75,6 @@ export class ContratoFormComponent implements OnInit {
     
   }
   editContrato(contrato: Contrato){
-    console.log('contrato:',contrato);
-    console.log('editcontrato:',contrato.authorized.id,contrato.person.id,contrato.dateStart,this.personID);
-    //não acessa o for
     
     
     //console.log('contrato',item.description,item.geometry,item.soil.id);
@@ -86,9 +93,9 @@ export class ContratoFormComponent implements OnInit {
 
   public onSubmit(){
     if(this.registerContratoForm.invalid){
-      console.log('retornou');
       return;
     }
+    //console.log('valor id autorizado',Number(this.f.authorized.value))
     if(!this.editContratoflag){
       this.registerService.register(Number(this.f.authorized.value),Number(this.personID ),this.f.dateStart.value, this.f.dateEnd.value).subscribe(
       (data) => {
@@ -103,10 +110,12 @@ export class ContratoFormComponent implements OnInit {
     );
   }
   else{
+
+      
       this.registerService.edit(this.contratoID,Number(this.f.authorized.value),Number(this.personID ),this.f.dateStart.value, this.f.dateEnd.value).subscribe(
       (data) => {
         console.log(data);
-
+        
         //redireciona a view
         this.router.navigate(['/contrato/all']);
       },

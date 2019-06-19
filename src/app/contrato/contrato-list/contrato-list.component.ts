@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contrato } from '../contrato.model';
 import { ContratoService } from '../contrato.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Pessoa } from 'src/app/pessoa/pessoa.model';
+
 
 @Component({
   selector: 'app-contrato-list',
@@ -14,7 +13,6 @@ import { Pessoa } from 'src/app/pessoa/pessoa.model';
 export class ContratoListComponent implements OnInit {
 
   contratos: Contrato[];
-  pessoas: Pessoa[];
   contratoEdit : Boolean;
  
   constructor(private contratoService: ContratoService,private router: Router) { }
@@ -22,15 +20,6 @@ export class ContratoListComponent implements OnInit {
 
   ngOnInit() {
     this.contratoEdit  = false;
-
-    this.contratoService.getUsers().subscribe(
-      (data: Pessoa[]) => {
-        this.pessoas = data;
-      },
-      (error) =>{
-        console.log(error);
-      }
-    );
 
   
     this.contratoService.getContratos().subscribe(

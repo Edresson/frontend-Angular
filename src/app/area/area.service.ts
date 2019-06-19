@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { getDefaultURL } from '../app.const';
 import { catchError } from 'rxjs/operators';
-import { Area } from './area.model';
+import { Area, Soil } from './area.model';
 
 @Injectable()
 export class AreaService {
@@ -41,6 +41,12 @@ export class AreaService {
   public getAreas = (): Observable<Area[]> =>{
     return this.http.get<Area[]>( getDefaultURL('area/all'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
   }
+
+  public getSoils = (): Observable<Soil[]> =>{
+    return this.http.get<Soil[]>( getDefaultURL('soil/all'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
+  }
+  
+
 
   public getArea = (areaId): Observable<Area> =>{
     return this.http.get<Area>( getDefaultURL('area/'+areaId), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));

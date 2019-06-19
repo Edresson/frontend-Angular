@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 //import { RegisterAreaServiceService } from './register-area-service.service';
 import { AreaService } from '../area.service';
-import { Area } from '../area.model';
+import { Area, Soil } from '../area.model';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class AreaFormComponent implements OnInit {
   areaID: number;
   message;
   editAreaflag: boolean;
-  
+  soils: Soil[];
 
   lt: number = -25.2970272;
   lg: number = -54.112394;
@@ -28,7 +28,15 @@ export class AreaFormComponent implements OnInit {
 
   ngOnInit() {
     this.editAreaflag = false;
-    
+    this.areaService.getSoils().subscribe(
+      (data: Soil[]) => {
+        this.soils = data;
+        console.log(data);
+      },
+      (error) =>{
+        console.log(error);
+      }
+    );
     this.registerAreaForm = this.formBuilder.group({
       descricao: ['', Validators.required],
       geometria:['', Validators.required],

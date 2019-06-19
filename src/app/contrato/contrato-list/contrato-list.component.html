@@ -15,7 +15,7 @@
             Id
           </td>
           <td>
-            Autorizado Id
+            Autorizado
           </td>
           <td>
             Data inicial
@@ -27,7 +27,7 @@
 
         <tr *ngFor="let item of contratos">
           <td>{{ item.id }}</td>
-          <td>{{ item.authorized.id }}</td>
+          <td>{{ item.authorized.name }}</td>
           <td>{{ item.dateStart }}</td>
           <td>{{ item.dateEnd }}</td>
           <td><button type="button" (click)="onUpdateContrato(item.id)" class="btn btn-primary" >Update</button></td>

@@ -16,10 +16,11 @@
     </div>
 
     <div class="form-group">
-      <input type="text" formControlName="tiposolo" class="form-control" placeholder="Tipo do Solo" [ngClass]="{ 'is-invalid': f.tiposolo.errors && submitted }"/>
-      <div *ngIf="registerAreaForm.hasError && f.tiposolo.errors" class="invalid-feedback">
-        <div *ngIf="f.tiposolo.errors.required">O Tipo do solo é obrigatório</div>
-      </div>
+        <select class="form-control" id="tiposolo" formControlName="tiposolo" placeholder="Tipo do Solo">
+            <option value="" disabled selected>Tipo do solo</option>  
+            <option *ngFor="let soil of soils" [value]="soil.id">{{soil.description}}</option>
+          </select>
+
     </div>
 
     <div class="form-group">

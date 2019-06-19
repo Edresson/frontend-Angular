@@ -19,6 +19,7 @@
         <tr  *ngFor="let item of resources">
           <td>{{ item.id }}</td>
           <td>{{ item.className }}</td>
+          
           <label *ngFor="let category of myGroup.controls[item.className].controls; let i = index">
             <input type="checkbox" [formControl]="category">
             {{ categories[i].name }} 
