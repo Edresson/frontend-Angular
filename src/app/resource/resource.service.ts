@@ -18,16 +18,6 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
       'Authorization': this.authUtil.currentTokenValue
     });
   }
-  public register = (authorized: number,person: number,dateStart:string,dateEnd:string): Observable<string> =>{
-    const body = JSON.stringify(
-    {
-      authorized: {id:authorized},
-      person: {id:person},
-      dateStart: dateStart,
-      dateEnd: dateEnd
-    });
-    return this.http.post<string>( getDefaultURL('resource'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
-  }
 
   public createPermission = (resourceid: number, contractid: number,get: Boolean,post:Boolean,put:Boolean,del:Boolean): Observable<Permission> =>{
     const body = JSON.stringify(
@@ -65,9 +55,7 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
     return this.http.put<string>( getDefaultURL('permission'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
 
-  public deleteResources = (resource:Resource): Observable<string> =>{
-    return this.http.delete<string>( getDefaultURL('resource/'+resource.id), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
-  }
+  
 
   public getResources = (): Observable<Resource[]> =>{
     return this.http.get<Resource[]>( getDefaultURL('resource'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));

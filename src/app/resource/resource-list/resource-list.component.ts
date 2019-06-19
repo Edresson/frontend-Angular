@@ -173,40 +173,7 @@ submit() {
     
   }
 
+
+
   
-  public onSubmit(){
-    this.router.navigate(['/resource/new']);
-  }
-
-  public onResource(resourceId: number){
-    console.log("Resource list")
-    this.router.navigate(['/resource/all',resourceId]);
-  }
-
-
-
-  public onUpdateResource(resourceId: number){
-    console.log("updateResource")
-    this.resourceEdit = true;
-    this.router.navigate(['/resource/edit',resourceId]);
-
-    //UpdateResource
-  }
-
-  public onDeleteResource(resource:Resource){
-    //Delete resource.id
-
-    this.resourceService.deleteResources(resource).subscribe(
-      (data: string) => {
-        this.ngOnInit();
-        console.log(data);
-      },
-      (error) =>{
-        console.log(error);
-      }
-    );
-    
-    //location.reload();
-
-  }
 }

@@ -3,6 +3,7 @@
   <h1 *ngIf="editContratoflag">Editar Contrato</h1>
   <form [formGroup]="registerContratoForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
+      
       <input type="text" formControlName="authorized" class="form-control" placeholder="Id da pessoa que sera autorizada" [class.is-invalid]="f.authorized.errors && submitted"/>
       <div *ngIf="registerContratoForm.hasError && f.authorized.errors" class="invalid-feedback">
         <div *ngIf="f.authorized.errors.required">O id do autorizado é obrigatório</div>

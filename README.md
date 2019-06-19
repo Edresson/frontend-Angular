@@ -29,8 +29,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## TODOs:
 
+usuario para login com acesso admin ( a função listar pessoas atualmente só funciona para adm, será mudado no futuro):
+    user: edresson@gmail.com
+    senha: 1234
+    
 () Add google maps in geometry form (/area/new)
 () Add combo box in  "tipo de solo"(/area/new)
-() Add britsh day in /register
 
-continuar de area/all
+() adicionar data em formato "normal em contrato/new
+() adicionar filtragem para mostrar data em formato "normal" ( dia/mes/ano acredito que pode desprezar a hora) em contrato/all
+() adicionar combobox de pessoas em contrato/new
+
+() usar  angular material para melhorar a interface alterar oque foi necessário.
+
+
+() ver com o professor o problema em resource/id/:id possivel problema de concorrencia usar Sincronização ? 
+

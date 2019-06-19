@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { getDefaultURL } from '../app.const';
 import { catchError } from 'rxjs/operators';
 import { Contrato } from './contrato.model';
+import { Pessoa } from '../pessoa/pessoa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,10 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
   }
   public getContrato= (contId): Observable<Contrato> =>{
     return this.http.get<Contrato>( getDefaultURL('contract/'+contId), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
+  }
+
+  public getUsers= (): Observable<Pessoa[]> =>{
+    return this.http.get<Pessoa[]>( getDefaultURL('person/all'), {headers: this.getHeaders()} ).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
