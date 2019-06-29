@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContratoService } from './contrato.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { MaterialModule } from './../material/material.module';
 
 
 
@@ -18,7 +19,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ContratoFormComponent, ContratoListComponent],
   imports: [
-    CommonModule,
+    MaterialModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

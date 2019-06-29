@@ -9,10 +9,10 @@ const routes: Routes = [
   { path: '', component: DefaultComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pessoa', loadChildren: './pessoa/pessoa.module#PessoaModule', canActivate: [AuthGuard] },
-  { path: 'area', loadChildren: './area/area.module#AreaModule', canActivate: [AuthGuard] },
-  { path: 'contrato', loadChildren: './contrato/contrato.module#ContratoModule', canActivate: [AuthGuard] },
-  { path: 'resource', loadChildren: './resource/resource.module#ResourceModule', canActivate: [AuthGuard] }
+  { path: 'pessoa', loadChildren: () => import('./pessoa/pessoa.module').then(m => m.PessoaModule), canActivate: [AuthGuard] },
+  { path: 'area', loadChildren: () => import('./area/area.module').then(m => m.AreaModule), canActivate: [AuthGuard] },
+  { path: 'contrato', loadChildren: () => import('./contrato/contrato.module').then(m => m.ContratoModule), canActivate: [AuthGuard] },
+  { path: 'resource', loadChildren: () => import('./resource/resource.module').then(m => m.ResourceModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({

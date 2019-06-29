@@ -1,5 +1,6 @@
+<!-- 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MyAPP</a>
+  <a class="navbar-brand" href="#">AgroContract</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,3 +22,36 @@
     </ul>
   </div>
 </nav>
+
+
+-->
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+      </button>
+  </div>
+  <div>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a routerLink="">Inicio</a>
+      </li>
+      <li>
+        <a routerLink="/contrato/all">Contratos</a>
+      </li>
+      <li>
+        <a routerLink="/area/all">Areas</a>
+      </li>
+    </ul>
+  </div>
+<div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <li>
+              <a routerLink="/login">Login</a>
+          </li>
+          <li>
+              <a routerLink="/register">Registrar</a>
+          </li>
+      </ul>
+  </div>
+</mat-toolbar>

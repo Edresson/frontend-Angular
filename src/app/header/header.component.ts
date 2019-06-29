@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { isNullOrUndefined } from 'util';
-import { AuthUtilService } from '../login/auth-util.service';
+import { AuthUtilService } from '../login/auth-util.service';1
+
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,8 @@ import { AuthUtilService } from '../login/auth-util.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  
+  @Output() public sidenavToggle = new EventEmitter();
 
   constructor(private authUtil: AuthUtilService) { }
 
@@ -20,5 +23,9 @@ export class HeaderComponent implements OnInit {
 
   public logout(){
     this.authUtil.logout();
+  }
+
+  public onToggleSidenav = () => {
+    this.sidenavToggle.emit();
   }
 }

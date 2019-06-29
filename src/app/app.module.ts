@@ -11,21 +11,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
 import { RegisterService } from './register/register.service';
+import { LayoutComponent } from './layout/layout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
+    LayoutComponent,   
     LoginComponent,
     RegisterComponent,
     DefaultComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    //Material
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule
+
   ],
   providers: [LoginService,RegisterService],
   bootstrap: [AppComponent]
