@@ -8,12 +8,7 @@
         <div *ngIf="f.descricao.errors.required">Descrição é obrigatório</div>
       </div>
     </div>
-    <div class="form-group">
-      <input type="text" formControlName="geometria" class="form-control" placeholder="Geometria" [ngClass]="{ 'is-invalid': f.geometria.errors && submitted }"/>
-      <div *ngIf="registerAreaForm.hasError && f.geometria.errors" class="invalid-feedback">
-        <div *ngIf="f.geometria.errors.required">A Geometria é obrigatória</div>
-      </div>
-    </div>
+    
 
     <div class="form-group">
         <select class="form-control" id="tiposolo" formControlName="tiposolo" placeholder="Tipo do Solo">
@@ -34,11 +29,8 @@
       </button>
     </div>
     <div class="form-group">
-      <agm-map [latitude]='lt' [zoom]='zoom' [longitude]='lg'>
-        <agm-marker [latitude]='lt' [longitude]='lg'>
 
-        </agm-marker>
-
+      <agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
       </agm-map>
     </div>
 
