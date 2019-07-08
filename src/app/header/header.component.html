@@ -47,8 +47,9 @@
 <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
       <ul fxLayout fxLayoutGap="15px" class="navigation-items">
           <li>
-              <a routerLink="/login">Login</a>
-          </li>
+              <a *ngIf="!isLogged()"  routerLink="/login">Login</a>
+              <a *ngIf="isLogged()" (click)="logout()">Logout</a>
+            </li>
           <li>
               <a routerLink="/register">Registrar</a>
           </li>
