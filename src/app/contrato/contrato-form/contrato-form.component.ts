@@ -5,7 +5,8 @@ import { ContratoService } from '../contrato.service';
 import { Contrato } from '../contrato.model';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { Pessoa } from 'src/app/pessoa/pessoa.model';
-
+import * as moment from 'moment/moment';
+import 'moment/locale/pt-br';
 @Component({
   selector: 'app-contrato-form',
   templateUrl: './contrato-form.component.html',
@@ -82,8 +83,8 @@ export class ContratoFormComponent implements OnInit {
         id: contrato.id,
         authorized: contrato.authorized.id,
         person: contrato.person.id,
-        dateStart: contrato.dateStart,
-        dateEnd: contrato.dateEnd
+        dateStart: moment(contrato.dateStart).format('D MMM YYYY'),
+        dateEnd:  moment(contrato.dateEnd).format('D MMM YYYY')
     })
     
   }

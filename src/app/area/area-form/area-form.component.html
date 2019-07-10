@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
 
-      <agm-map [latitude]="center.lat" [longitude]="center.lng" (mapReady)="onMapReady($event)" >
+      <agm-map [latitude]="center.lat" [longitude]="center.lng" [mapTypeControl]='true' (mapReady)="onMapReady($event)" >
       </agm-map>
     </div>
 
