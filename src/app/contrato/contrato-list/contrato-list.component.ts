@@ -3,7 +3,8 @@ import { Contrato } from '../contrato.model';
 import { ContratoService } from '../contrato.service';
 import { Router } from '@angular/router';
 
-
+import * as moment from 'moment/moment';
+import 'moment/locale/pt-br';
 @Component({
   selector: 'app-contrato-list',
   templateUrl: './contrato-list.component.html',
@@ -24,7 +25,12 @@ export class ContratoListComponent implements OnInit {
   
     this.contratoService.getContratos().subscribe(
       (data: Contrato[]) => {
+        data.forEach(item => {
+          item.dateEnd = moment(item.dateEnd).format('D MMM YYYY')
+          item.dateStart = moment(item.dateStart).format('D MMM YYYY')
+        });
         this.contratos = data;
+
       },
       (error) =>{
         console.log(error);

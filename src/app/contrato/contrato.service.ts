@@ -6,6 +6,8 @@ import { getDefaultURL } from '../app.const';
 import { catchError } from 'rxjs/operators';
 import { Contrato } from './contrato.model';
 import { Pessoa } from '../pessoa/pessoa.model';
+import * as moment from 'moment/moment';
+import 'moment/locale/pt-br';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,8 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
     {
       authorized: {id:authorized},
       person: {id:person},
-      dateStart: dateStart,
-      dateEnd: dateEnd
+      dateStart: moment(dateStart).format('YYYY-MM-DDTHH:mm:ssZZ'),
+      dateEnd: moment(dateEnd).format('YYYY-MM-DDTHH:mm:ssZZ')
     });
     return this.http.post<string>( getDefaultURL('contract'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
@@ -36,8 +38,8 @@ constructor(private http:HttpClient,private authUtil: AuthUtilService) { }
         id: id,
         authorized: {id:authorized},
         person: {id:person},
-        dateStart: dateStart,
-        dateEnd: dateEnd
+        dateStart: moment(dateStart).format('YYYY-MM-DDTHH:mm:ssZZ'),
+      dateEnd: moment(dateEnd).format('YYYY-MM-DDTHH:mm:ssZZ')
       });
     return this.http.put<string>( getDefaultURL('contract'), body, {headers: this.getHeaders(), responseType: 'text' as 'json' } ).pipe(catchError(this.handleError));
   }
